@@ -35,6 +35,16 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+
+                         <!-- Show Cart for Authenticated Customers -->
+    @auth
+        @if (Auth::user()->role === 'customer')
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('cart.index') }}">🛒 Cart</a>
+            </li>
+        @endif
+    @endauth
+
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
